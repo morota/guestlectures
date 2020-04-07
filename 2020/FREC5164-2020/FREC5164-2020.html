@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Guest lecture: Genomic Prediction</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Gota Morota  http://morotalab.org/" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Guest lecture: Genomic Prediction
+## FREC5164 Population Genomics
+### Gota Morota <br /><a href="http://morotalab.org/">http://morotalab.org/</a> <br />
+### 4/7/2020
+
+---
+
+
+
+
+
+
+
+class: inverse, center, middle
+
+# Quantitative Genetics
+
+--
+
+Analysis of complex or multifactorial traits 
+
+--
+
+All genes affect all traits - the question is by how much?
+
+--
+
+Infinitesimal model
+
+--
+
+Quasi-infinitesimal model, Oligogenic model
+
+
+
+
+
+---
+
+# Complex traits
+&lt;img src="phenotype-plant.png" width=800 height=530&gt;
+
+
+
+
+---
+
+# Regression model
+Galton (1886). Regression towards mediocrity in hereditary stature
+"&lt;img src="galton1886.png" width=600 height=380&gt;
+
+
+
+
+
+
+
+
+---
+# Genetic values
+Quantitative genetic model:
+
+`\begin{align*}
+\mathbf{y} &amp;= \mathbf{g} + \boldsymbol{\epsilon} \\
+\end{align*}`
+where `\(\mathbf{y}\)` is the vector of observed phenotypes, `\(\mathbf{g}\)` is the vector of genetic values, and `\(\boldsymbol{\epsilon}\)` is the vector of residuals. 
+
+Example:
+
+| Plant ID   | y           | g  |   e  |
+| ------------- |:-------------:| -----:|------|
+| 1      | 10 | ? |  ?     |
+| 2      |  7     |   ? |  ?    |
+| 3 | 12     |    ? |    ? |
+
+
+
+
+---
+# Genetic values
+Quantitative genetic model:
+
+`\begin{align*}
+\mathbf{y} &amp;= \mathbf{g} + \boldsymbol{\epsilon} \\
+\end{align*}`
+where `\(\mathbf{y}\)` is the vector of observed phenotypes, `\(\mathbf{g}\)` is the vector of genetic values, and `\(\boldsymbol{\epsilon}\)` is the vector of residuals. 
+
+Example:
+
+| Plant ID    | y           | g  |   e  |
+| ------------- |:-------------:| -----:|------|
+| 1      | 10 | 5 |  5     |
+| 2      |  7     |   6 |  1    |
+| 3 | 12     |    2 |    10 |
+
+
+--
+
+Phenotypes can be observed and measured but genotypic and additive genetic effects cannot
+
+
+
+
+
+---
+# Conventional Phenotyping
+![](ruler-plant.png)
+
+.pull-left[
+- labor intensive
+
+- prone to measurement error
+]
+
+.pull-right[
+&lt;iframe src="https://giphy.com/embed/Jk4ZT6R0OEUoM" width="500" height="160" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/Jk4ZT6R0OEUoM"&gt;via GIPHY&lt;/a&gt;&lt;/p&gt;
+]
+
+---
+# Genomic information (e.g., SNPs)
+![](SNPs.png)
+
+.center[Repeat of numbers 0, 1, and 2]
+
+
+
+
+
+---
+# Quantitative genetics
+Connecting phenotypic data with genomic information&lt;center&gt;
+&lt;div&gt;
+&lt;img src="plant.png" width=200 height=100&gt;
+=
+&lt;img src="SNPs.png" width=200 height=100&gt; + error 
+&lt;/div&gt;
+&lt;/center&gt;
+`\begin{align*}
+\mathbf{y} &amp;= \mathbf{g} + \boldsymbol{\epsilon} \\
+ &amp;\approx \mathbf{W}\mathbf{a} + \boldsymbol{\epsilon} 
+\end{align*}`
+We approximate unknown `\(\mathbf{g}\)` with `\(\mathbf{Wa}\)`. 
+`\begin{align*}
+\underbrace{\begin{bmatrix}    
+y_1\\
+y_2\\
+\vdots \\
+y_n\end{bmatrix}}_{n \times 1}  
+&amp;= \underbrace{\begin{bmatrix}
+   w_{11} &amp; w_{12} &amp; \cdots &amp; w_{1m} \\
+    w_{21} &amp; w_{22} &amp; \cdots &amp; w_{2m} \\
+    \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+    w_{n1} &amp; w_{n2} &amp; \cdots &amp; w_{nm}
+\end{bmatrix}}_{n \times m} \quad
+\underbrace{\begin{bmatrix}
+a_1\\
+a_2\\
+\vdots \\
+a_m\end{bmatrix}}_{m \times 1} 
++\underbrace{\begin{bmatrix}
+\epsilon_1\\
+\epsilon_2\\
+\vdots \\
+\epsilon_m\end{bmatrix}}_{n \times 1} 
+\end{align*}`
+
+where `\(n\)` is the number of individuals (e.g., accessions) and `\(m\)` is the number of SNPs. 
+
+
+
+
+---
+# Precision agriculture using advanced technologies
+![](precision-plant.png)
+
+
+
+
+---
+# Precision (digital) phenotyping
+![](plant-digit.png)
+
+
+.pull-left[
+- automated process
+
+- less labor intensive
+
+- less prone to measurement error
+]
+
+.pull-right[
+&lt;iframe src="https://giphy.com/embed/wW95fEq09hOI8" width="400" height="160" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/chihuahua-funny-cute-wW95fEq09hOI8"&gt;via GIPHY&lt;/a&gt;&lt;/p&gt;
+]
+
+
+---
+# Image phenotypes
+![](plant_01.png)
+&amp;nbsp;
+&amp;nbsp;
+![](plant_02.jpg)
+
+.center[Image data]
+
+
+
+
+---
+# High-throughput phenomics
+.pull-left[
+&lt;div align="left"&gt;
+&lt;iframe src="https://innovate.unl.edu/video/leasing-options/greenhouse-innovation-center.mp4" width="250" height="150" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://innovate.unl.edu/greenhouse-innovation-center"&gt;UNL Greenhouse Innovation Center&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div align="left"&gt;
+&lt;iframe width="260" height="200" src="https://www.youtube.com/embed/wor4BFjbIyI?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=wor4BFjbIyI"&gt;Spidercam&lt;/a&gt;
+&lt;/div&gt;
+
+]
+
+.pull-right[
+&lt;div align="right"&gt;
+&lt;img src="https://www.frontiersin.org/files/Articles/254051/fpls-08-00421-HTML/image_m/fpls-08-00421-g002.jpg" width=400 height=400&gt;&lt;p&gt;Unmanned aerial vehicle&lt;a href="https://www.frontiersin.org/articles/10.3389/fpls.2017.00421/full"&gt; (Watanabe et al. 2017)&lt;/a&gt;
+&lt;/div&gt;
+]
+
+
+---
+# Automated image-based phenomics facility
+![](auspheno.png)
+
+---
+# Automated high-throughput phenotyping
+&lt;iframe width="700" height="500" src="https://www.youtube.com/embed/JWNoQ3w-KbY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+
+---
+# Quantitative genetics
+Connecting image data with genomic information 
+&lt;center&gt;
+&lt;div&gt;
+&lt;img src="plant_01.png" width=100 height=100&gt;
+=
+&lt;img src="SNPs.png" width=100 height=100&gt; + error 
+&lt;/div&gt;
+&lt;/center&gt;
+`\begin{align*}
+\mathbf{y} &amp;= \mathbf{g} + \boldsymbol{\epsilon} \\
+ &amp;\approx \mathbf{W}\mathbf{a} + \boldsymbol{\epsilon} 
+\end{align*}`
+We approximate unknown `\(\mathbf{g}\)` with `\(\mathbf{Wa}\)`. 
+`\begin{align*}
+\underbrace{\begin{bmatrix}    
+y_1\\
+y_2\\
+\vdots \\
+y_n\end{bmatrix}}_{n \times 1}  
+&amp;= \underbrace{\begin{bmatrix}
+   w_{11} &amp; w_{12} &amp; \cdots &amp; w_{1m} \\
+    w_{21} &amp; w_{22} &amp; \cdots &amp; w_{2m} \\
+    \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+    w_{n1} &amp; w_{n2} &amp; \cdots &amp; w_{nm}
+\end{bmatrix}}_{n \times m} \quad
+\underbrace{\begin{bmatrix}
+a_1\\
+a_2\\
+\vdots \\
+a_m\end{bmatrix}}_{m \times 1} 
++\underbrace{\begin{bmatrix}
+\epsilon_1\\
+\epsilon_2\\
+\vdots \\
+\epsilon_m\end{bmatrix}}_{n \times 1} 
+\end{align*}`
+
+where `\(n\)` is the number of individuals (e.g., accessions) and `\(m\)` is the number of SNPs. 
+
+
+
+
+
+---
+# Big in n or m?
+![](equation-plant1.png)
+- `\(n\)`: number of individuals (records)
+
+- `\(m\)` number of SNPs (genetic markers)
+
+
+
+
+
+---
+# Prediction vs. Inference
+Complex traits are controlled by large number of genes with small effects, and  influenced by both genetics and environments
+
+- Inference (location)
+    - average effects of allele substitution
+
+- Inference (variability)
+   - variance component estimation
+   - genomic heritability
+  
+Combination of above two (e.g., estimate proportion of additive genetic variance explained by QTLs)
+
+- Prediction 
+    - genomic selection
+    - prediction of yet-to-be observed phenotypes
+
+
+
+---
+# Prediction vs. Inference 
+&lt;div align="center"&gt;
+&lt;img src="Lo2015PNAS.png" width=900 height=400&gt;
+&lt;/div&gt;
+
+* [http://www.pnas.org/content/112/45/13892.abstract
+](http://www.pnas.org/content/112/45/13892.abstract
+)
+
+
+
+
+---
+# GWAS vs. Prediction
+![](https://upload.wikimedia.org/wikipedia/commons/1/12/Manhattan_Plot.png)
+.right[[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Manhattan_Plot.png)]
+
+
+
+---
+# How to parameterize  response variable y?
+
+- Prediction of additive genetic effects 
+     - `\(\mathbf{ y =  E + a + \boldsymbol{\epsilon}}\)` 
+     
+- Prediction of total genetic effects **parametrically**
+     - `\(\mathbf{ y =  \mathbf{E} + \underbrace{\mathbf{ a + d + a*a + a*d + d*d}}_{g} + } \boldsymbol{\epsilon}\)` 
+
+- Prediction of total genetic effects **non-parametrically**
+     - `\(\mathbf{ y =  \mathbf{E} + \mathbf{g} + \boldsymbol{\epsilon}}\)` 
+
+
+1. Genomic selection
+2. Genomic prediction
+3. Phenotypic prediction
+
+
+
+
+---
+# What is quantitative genetics?
+
+--
+
+Population genetics
+- **Mathematics** is language of population genetics, **population genetics** is language of **evolution**.
+
+--
+
+Quantitative genetics 
+- **Statistics** is language of quantitative genetics, **quantitative genetics** is language of **complex trait genetics**. 
+
+--
+
+**Phenotypes** first in quantitative genetics
+
+In the era of genomics, phenotype is **king**
+
+
+&lt;center&gt;
+&lt;iframe src="https://giphy.com/embed/9ADoZQgs0tyww" width="400" height="200" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/obama-awesome-statistics-9ADoZQgs0tyww"&gt;via GIPHY&lt;/a&gt;&lt;/p&gt;
+&lt;/center&gt;
+
+---
+# Genomic prediction - use all available markers
+![](mhg2001.png)
+.center[[Meuwissen et al. (2001)](http://www.genetics.org/content/157/4/1819)]
+
+
+.pull-left[
+- Genomic selection
+- Genome-enabled selection
+- Genome-assisted selection
+- Genomic prediction
+- Genome-enabled prediction
+- Genome-assisted prediction
+]
+
+.pull-right[
+- generation interval
+- prediction performance
+]
+
+---
+# How genomic selection works?
+&lt;div align="center"&gt;
+&lt;img src="gsNRG.png" width=900 height=400&gt;
+&lt;p&gt;&lt;a href="https://www.nature.com/articles/nrg2575"&gt; Goddard and Hayes (2009)
+&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+---
+# Genomic selection vs. Marker assisted selection
+&lt;div align="center"&gt;
+&lt;img src="nakayaIsobe.png" width=600 height=400&gt;
+&lt;p&gt;&lt;a href="https://academic.oup.com/aob/article/110/6/1303/110713"&gt; Nakaya and Isobe (2012)&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+---
+# How to evaluate prediction performance
+Cross-validation
+
+- take model uncertainty into account
+
+- divide data into training and testing sets
+
+- train the model in the training set
+
+- evaluate predictive performance in the testing set
+
+- predictive correlation: `\(r = cor(\mathbf{y}, \hat{\mathbf{y}})\)`
+
+- predictive correlation squared: `\(R^2 = cor(\mathbf{y}, \hat{\mathbf{y}})^2\)`
+
+- mean-squared error: `\(\sum(y - \hat{y})^2/n_{test}\)`
+
+
+
+
+---
+# Forward validation 
+![](CV1.png)
+
+---
+# Two-fold validation 
+Repeat this process many times (e.g., 10)
+![](CV2.png)
+
+---
+# Three-fold validation 
+Repeat this process many times (e.g., 10)
+![](CV3.png)
+
+---
+# k-fold validation 
+
+- two-fold cross-validation
+
+- five-fold cross-validation
+
+- ten-fold cross-validation
+
+
+
+
+
+---
+# Ordinary least squares (OLS) 
+Quantitative genetic model: `\(\mathbf{y} = \mathbf{Wa} + \boldsymbol{\epsilon}\)`
+
+How to find the SNP effects ( `\(\mathbf{a}\)` )?
+
+--
+
+We minimize the residual sum of squares
+`\begin{align*}
+\boldsymbol{\epsilon}' \boldsymbol{\epsilon} &amp;= (\mathbf{y-Wa})'(\mathbf{y-Wa}) \\
+&amp;= \mathbf{y}'\mathbf{y}  - \mathbf{y}'\mathbf{W} \mathbf{a}- \mathbf{a}'\mathbf{W}'\mathbf{y} + \mathbf{a}'\mathbf{W}'\mathbf{W}\mathbf{a}  \\
+&amp;= \mathbf{y}'\mathbf{y} - 2\mathbf{a}'\mathbf{W}'\mathbf{y} + \mathbf{a}'\mathbf{W}'\mathbf{W}\mathbf{a}
+\end{align*}`
+
+We take a partial derivative with respect to `\(\mathbf{a}\)`
+`\begin{align*}
+  \frac{\partial \boldsymbol{\epsilon\epsilon}'}{\partial \boldsymbol{a}} &amp;= 2 \mathbf{W}'\mathbf{W} \mathbf{a} - 2\mathbf{X}'\mathbf{y}
+\end{align*}`
+
+By setting the equation equal to zero, we obtain a least square estimator of `\(\mathbf{a}\)`. 
+`\begin{align*}
+\mathbf{W}'\mathbf{W} \mathbf{a} &amp;= \mathbf{W}' \mathbf{y} \\
+\hat{\mathbf{a}} &amp;= (\mathbf{W}'\mathbf{W})^{-1} \mathbf{W}' \mathbf{y}
+\end{align*}`
+
+
+
+---
+# Ordinary least squares (OLS) 
+- `\(\hat{\mathbf{a}}\)` is the vector of regression coefficient for markers, i.e., effect size of SNPs
+
+- if the Gauss-Markov theorem is met, `\(E[\hat{\mathbf{a}}] = \mathbf{a} \rightarrow\)` BLUE 
+    - `\(E[\boldsymbol{\epsilon}] = 0\)`,  `\(Var[\boldsymbol{\epsilon}] = \mathbf{I}\sigma^2_{\epsilon}\)`
+    
+
+What if  number of SNPs ( `\(m\)` ) `\(&gt;&gt;\)`  number of individuals ( `\(n\)` ) ???
+
+--
+
+- `\((\mathbf{W}'\mathbf{W})^{-1}\)` does not exist 
+
+- Effective degrees of freedom 
+
+
+
+
+
+
+---
+class: inverse, center, middle
+
+# Genomic BLUP
+
+
+
+
+---
+# Genomic best linear unbiased prediction
+Suppose underlying signal is given by  
+$$
+\mathbf{y} = \mathbf{g} + \boldsymbol{\epsilon}
+$$
+
+where `\(\mathbf{g} \sim N(0, \mathbf{G}\sigma^2_g)\)`. 
+
+We approximate the vector of genetic values `\(\mathbf{g}\)` with a linear function  
+
+$$
+\mathbf{y} = \mathbf{W}\mathbf{a} + \boldsymbol{\epsilon}
+$$
+
+- `\(\mathbf{W}\)` is the centered `\(n\)` `\(\times\)` `\(m\)` matrix of additive marker genotypes 
+
+- `\(\mathbf{a}\)` is the vector of regression coefficients on marker genotypes 
+
+- `\(\boldsymbol{\epsilon}\)` is the residual 
+
+
+---
+# Genomic best linear unbiased prediction
+Variance-covariance matrix of `\(\mathbf{y}\)` is
+`\begin{align*}
+\mathbf{V}_y &amp;= \mathbf{V}_g + \mathbf{V}_{\epsilon} \\
+&amp;= \mathbf{WW'}\sigma^2_{a} + \mathbf{I} \sigma^2_{\epsilon}
+\end{align*}`
+
+- `\(\mathbf{a} \sim N(0, \mathbf{I}\sigma^2_{\mathbf{a}})\)`  
+
+- `\(\boldsymbol{\epsilon} \sim N(0, \mathbf{I}\sigma^2_{\boldsymbol{\epsilon}})\)`
+
+- `\(\mathbf{V}_g = \mathbf{WW'}\sigma^2_{a}\)` is the covariance matrix due to markers
+
+
+
+---
+# Genomic best linear unbiased prediction
+If normality is assumed, the best linear unbiased prediction (BLUP) of `\(\mathbf{g}\)` `\((\hat{\mathbf{g}})\)` is the conditional mean of `\(\mathbf{g}\)` given the data  
+`\begin{align}
+BLUP(\hat{\mathbf{g}}) &amp;= E(\mathbf{g}|\mathbf{y}) = E[\mathbf{g}] + Cov(\mathbf{g}, \mathbf{y}^T) Var(\mathbf{y})^{-1}  [\mathbf{y} - E(\mathbf{y})] \notag \\
+&amp;=  Cov(\mathbf{W}\mathbf{a}, \mathbf{y}^T)\cdot \mathbf{V}_y^{-1}  \mathbf{y}  \notag \\
+&amp;= \mathbf{WW'}\sigma^2_{\mathbf{a}} [\mathbf{WW'}\sigma^2_{a} + \mathbf{I} \sigma^2_{\epsilon}]^{-1}  \mathbf{y}  \notag \\
+&amp;= [\mathbf{I} +    \frac{\sigma^2_{\epsilon}}{\mathbf{WW'}\sigma^2_{a}} ]^{-1}  \mathbf{y}  \\
+&amp;= [\mathbf{I} +  (\mathbf{WW'})^{-1}  \frac{\sigma^2_{\epsilon}}{\sigma^2_{a}} ]^{-1}  \mathbf{y}, 
+\end{align}`
+assuming that `\(\mathbf{WW'}\)` is invertible
+
+- `\(Cov(\mathbf{W}) = \mathbf{WW'}\)`  is a covariance matrix of marker genotypes (provided that `\(X\)` is centered), often considered to be the simplest form of additive genomic relationship kernel, `\(\mathbf{G}\)`. 
+
+
+---
+# Genomic best linear unbiased prediction
+We can refine this kernel `\(Cov(\mathbf{W}) = \mathbf{WW'}\)` by relating genetic variance `\(\sigma^2_g\)` and marker genetic variance `\(\sigma^2_{a}\)` under the following assumptions
+
+Assume genetic value is parameterized as 
+`\(g_{i} = \sum w_{ij} a_j\)` 
+where both `\(x\)` and `\(a\)` are treated as random and independent. 
+
+Assuming linkage  equilibrium of markers (all loci are mutually independent) 
+`\begin{align*}
+\sigma^2_g &amp;= \sum_j 2 p_j(1-p_j) \cdot \sigma^2_{a_j}. \notag \\
+\end{align*}`
+Under the homogeneous marker variance assumption
+`\begin{align}
+\sigma^2_{a} &amp;= \frac{\sigma^2_g}{2 \sum_j p_j(1-p_j) }.
+\end{align}`
+
+
+
+---
+# Genomic best linear unbiased prediction
+Recall that 
+`\begin{align}
+BLUP(\hat{\mathbf{g}}) &amp;= [\mathbf{I} +  (\mathbf{WW'})^{-1}  \frac{\sigma^2_{\epsilon}}{\sigma^2_{a}} ]^{-1}  \mathbf{y}, 
+\end{align}`
+
+Replacing `\(\sigma^2_{a}\)` we get 
+`\begin{align}
+BLUP(\hat{\mathbf{g}}) &amp;= \left [\mathbf{I} +    (\mathbf{WW'})^{-1} \frac{\sigma^2_{\epsilon}}{ \frac{ \sigma^2_{g}}{2 \sum_j p_j(1-p_j)}} \right ]^{-1}  \mathbf{y}  \notag \\ 
+&amp;= \left [\mathbf{I} +    \mathbf{G}^{-1} \frac{\sigma^2_{\epsilon}}{ \sigma^2_g} \right ]^{-1}  \mathbf{y}  
+\end{align}`
+where `\(\mathbf{G} = \frac{\mathbf{WW'}}{2 \sum_j p_j(1-p_j)}\)` is known as the first `\(\mathbf{G}\)` matrix  introduced in VanRaden (2008)
+
+
+
+---
+class: inverse, center, middle
+
+# Ridge regression BLUP
+
+
+---
+## BLUP of marker effects 
+Suppose that the phenotype-genotype mapping function is 
+`\begin{align*}
+\mathbf{y} &amp;= \mathbf{g} + \boldsymbol{\epsilon} \\
+\mathbf{y} &amp;= \mathbf{W}\mathbf{a} + \boldsymbol{\epsilon} \\
+\mathbf{a} &amp;\sim N(0, \mathbf{I}\sigma^2_{a})  
+\end{align*}`
+The conditional expectation of `\(\mathbf{a}\)` given `\(\mathbf{y}\)` is 
+`\begin{align*}
+BLUP(\mathbf{a}) &amp;= E(\mathbf{a}| \mathbf{y})= Cov(\mathbf{a}, \mathbf{y})Var(\mathbf{y})^{-1} [\mathbf{y} - E(\mathbf{y})] \\
+&amp;= Cov(\mathbf{a}, \mathbf{W}\mathbf{a}) [\mathbf{W}\mathbf{W'} \sigma^2_{\mathbf{a}}+ \mathbf{I}\sigma^2_{\boldsymbol{\epsilon}}]^{-1} \mathbf{y} \\
+&amp;= \sigma^2_{\mathbf{a}} \mathbf{W}' [\mathbf{W}\mathbf{W'} \sigma^2_{\mathbf{a}} + \mathbf{I}\sigma^2_{\boldsymbol{\epsilon}}]^{-1} \mathbf{y} \\
+&amp;= \sigma^2_{\mathbf{a}} \mathbf{W'}  (\mathbf{W}\mathbf{W'})^{-1} [ \sigma^2_{\mathbf{a}}\mathbf{I} + (\mathbf{W}\mathbf{W'})^{-1} \sigma^2_{\boldsymbol{\epsilon}}]^{-1}  \mathbf{y} \\
+&amp;=  \mathbf{W}^T  (\mathbf{W}\mathbf{W'})^{-1} [ \mathbf{I} + (\mathbf{W}\mathbf{W'})^{-1}  \frac{\sigma^2_{\boldsymbol{\epsilon}}}{\sigma^2_{\mathbf{a}}} ]^{-1}  \mathbf{y}.
+\end{align*}`
+
+Alternatively,
+`\begin{align*}
+BLUP(\mathbf{a}) &amp;=  \mathbf{W}^T [ (\mathbf{W}\mathbf{W'}) +  \frac{\sigma^2_{\boldsymbol{\epsilon}}}{\sigma^2_{\mathbf{a}}}\mathbf{I} ]^{-1}  \mathbf{y}. 
+\end{align*}`
+
+
+
+---
+# BLUP of marker effects 
+Thus, 
+`\begin{align*}
+BLUP(\mathbf{a}) &amp;= \mathbf{W}^T  (\mathbf{W}\mathbf{W'})^{-1} [ \mathbf{I} + (\mathbf{W}\mathbf{W'})^{-1}  \frac{\sigma^2_{\boldsymbol{\epsilon}}}{\sigma^2_{\mathbf{a}}} ]^{-1}  \mathbf{y} \\
+&amp;=  \mathbf{W'}  (\mathbf{W}\mathbf{W'})^{-1} BLUP(\mathbf{g}).
+\end{align*}`
+Thus, once we obtain `\(\hat{\mathbf{g}}\)` from GBLUP, BLUP of marker coefficients is given by 
+`\(\hat{\mathbf{a}} = \mathbf{W'} (\mathbf{W}\mathbf{W'})^{-1} \hat{\mathbf{g}}\)`
+
+We arrive at the  same prediction regardless of whether we start from the genotype matrix `\(\mathbf{W}\)` or from `\(\mathbf{g}\)` 
+
+
+
+
+---
+# Summary
+- GBLUP 
+`\begin{align*}
+\mathbf{y} &amp;= \mathbf{g} + \boldsymbol{\epsilon} \\
+\mathbf{g} &amp;\sim N(0, \mathbf{G}\sigma^2_g) \\
+\mathbf{G} &amp;= \frac{\mathbf{WW'}}{2 \sum_j p_j(1-p_j)}
+\end{align*}`
+
+
+- RR-BLUP
+`\begin{align*}
+\mathbf{y} &amp;= \mathbf{g} + \boldsymbol{\epsilon} \\
+\mathbf{y} &amp;= \mathbf{W}\mathbf{a} + \boldsymbol{\epsilon} \\
+\mathbf{a} &amp;\sim N(0, \mathbf{I}\sigma^2_{a})  
+\end{align*}`
+
+- GBLUP and RR-BLUP
+`\begin{align*}
+BLUP(\mathbf{a}) &amp;=  \mathbf{W'}  (\mathbf{W}\mathbf{W'})^{-1} BLUP(\mathbf{g}).
+\end{align*}`
+
+--
+
+Assumption about marker effects?
+
+
+---
+# Cross-validation for RRBLUP 
+Training and testing sets partitioning 
+`\begin{align*}
+\text{Training} &amp;\in (\mathbf{y}_{trn},\mathbf{W}_{trn} )  \\
+\text{Testing} &amp;\in (\mathbf{y}_{tst},\mathbf{W}_{tst} )  \\
+\mathbf{y}_{trn} &amp;= \mathbf{W}_{trn} \hat{\mathbf{a}}_{trn} + \mathbf{e}_{trn} \\
+\end{align*}`
+
+How to do a cross-validation?
+
+--
+
+`\begin{align*}
+\hat{\mathbf{g}}_{tst} &amp;= \mathbf{W}_{tst} \hat{\mathbf{a}}_{trn} 
+\end{align*}`
+
+--
+
+Then evaluate 
+`\begin{align*}
+Cor(\mathbf{y}_{tst}, \hat{\mathbf{g}}_{tst}) = 
+Cor(\mathbf{y}_{tst}, \mathbf{W}_{tst} \hat{\mathbf{a}}_{trn} )
+\end{align*}`
+
+
+
+---
+# Cross-validation for GBLUP
+Training and testing sets partitioning 
+`\begin{align*}
+\mathbf{y}_{trn} &amp;= \mathbf{g}_{trn} + \mathbf{e}_{trn} \\
+\mathbf{g}_{trn} &amp;\sim N(0, \mathbf{G}_{trn, trn}) \\
+\mathbf{y}_{tst} &amp;= \mathbf{g}_{tst} + \mathbf{e}_{trn} \\
+\mathbf{g}_{tst} &amp;\sim N(0, \mathbf{G}_{tst, tst}) \\
+\end{align*}`
+How to do a cross-validation?
+
+--
+
+Compute BLUP of `\(\mathbf{g}_{tst}\)` given `\(\hat{\mathbf{g}}_{trn}\)`
+`\begin{align*}
+BLUP(\mathbf{g}_{tst}) &amp;= E(\mathbf{g}_{tst}|\hat{\mathbf{g}}_{trn}) \\
+&amp;= Cov(\mathbf{g}_{tst}, \hat{\mathbf{g}}_{trn}) Var(\hat{\mathbf{g}}_{trn})^{-1} [\hat{\mathbf{g}}_{trn} - E(\hat{\mathbf{g}}_{trn})] \\
+&amp;= \mathbf{G}_{tst, trn}\sigma^2_{g} \mathbf{G}_{trn, trn}^{-1} \sigma^{-2}_g \hat{\mathbf{g}}_{trn}  \\
+&amp;= \mathbf{G}_{tst, trn} \mathbf{G}_{trn, trn}^{-1} \hat{\mathbf{g}}_{trn}  \\
+\end{align*}`
+
+
+--
+
+Then evaluate 
+`\begin{align*}
+Cor(\mathbf{y}_{tst}, \hat{\mathbf{g}}_{tst}) = 
+Cor(\mathbf{y}_{tst}, \mathbf{G}_{tst, trn} \mathbf{G}_{trn, trn}^{-1} \hat{\mathbf{g}}_{trn})
+\end{align*}`
+
+
+
+
+
+
+
+
+
+
+
+
+---
+class: inverse, center, middle
+# Interactive deterministic formulas for genomic prediction
+
+
+
+---
+# Shiny - [https://shiny.rstudio.com/](https://shiny.rstudio.com/)
+
+- A web application framework for **interactive** visualization
+
+- Able to generate user friendly web interfaces 
+
+- Built on a reactive programming model
+
+- Entirely extensible 
+   - custom inputs and outputs
+   - CSS themes
+   - JavaScript and D3.js
+
+- Example - [Collision Detection](https://bl.ocks.org/mbostock/raw/3231298/)
+
+---
+
+# Shiny framework 
+&lt;img src="Shinyframework.png" height="300px" width="650px"/&gt;
+
+**Template**
+
+```r
+library(shiny)
+
+ui &lt;- fluidPage()
+server &lt;- function(input, output) {}
+
+shinyApp(ui = ui, server = server)
+```
+
+
+---
+
+# Control widgets 
+&lt;img src="widgets.png" width=700 height=470&gt;
+.left[[RStudio](https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/)]
+
+
+
+---
+# Cross-validation for genomic prediction
+&lt;div align="center"&gt;
+&lt;img src="Fig1CV.png" width=650 height=450&gt;
+&lt;/div&gt;
+.right[[doi:10.1093/jas/sky014](http://dx.doi.org/10.1093/jas/sky014)]
+
+
+
+
+
+
+
+
+---
+
+# Deterministic genomic prediction formulas
+
+-  highlight the relationships among prediction accuracy and potential factors influencing prediction accuracy
+
+- no computationally intensive cross-validation
+
+
+1)  **Population parameter-based deterministic formulas**
+
+- genotypes of individuals are not required 
+
+2)  **Relationship-based deterministic formulas**
+
+- genotypes of individuals need to be known
+
+
+
+---
+class: inverse, left, middle
+
+# ShinyGPAS - Shiny Genomic Prediction Accuracy Simulator
+
+Can be used for 
+- _interactive_ exploration of potential factors influencing prediction accuracy 
+
+- simulation of achievable prediction accuracy 
+   - prior to genotyping individuals or performing CV
+   
+- supporting in-class teaching
+
+- no knowlege of R, HTML, JavaScript, or CSS is required. R code encapsulated as a web-based Shiny application
+
+
+Available at [https://chikudaisei.shinyapps.io/shinygpas/](https://chikudaisei.shinyapps.io/shinygpas/) and [https://github.com/morota/ShinyGPAS](https://github.com/morota/ShinyGPAS)
+
+
+
+
+
+
+---
+class: inverse, center, middle
+
+# Population parameter-based deterministic formulas
+
+
+
+---
+
+# Deterministic formula (1)
+Daetwyler et al. (2008; 2010)
+`\begin{align}
+r &amp;= \sqrt{\frac{N h^2}{N h^2 + M_e} }
+\end{align}`
+where `\(N\)` is the number of individuals in the reference population, `\(h^2\)` is the heritability, and `\(M_e\)` is the number of independent chromosome segments.
+
+- treating genetic markers as fixed
+
+- independence of quantitative trait loci (QTL)
+
+- regression of phenotypes on genotype one locus at a time 
+
+- `\(\sigma^2_{\epsilon}\)` and `\(\sigma^2_g + \sigma^2_{\epsilon}=1\)`
+
+- identical accuracy of QTL effect size estimates across QTL allele frequencies
+
+- perfect linkage disequilibrium (LD) between marker and QTL pairs
+
+- unrelated individuals
+
+
+---
+
+# Deterministic formula (2)
+Goddard (2009)
+`\begin{align}
+r &amp;= \sqrt{1 - \frac{\lambda}{2N\sqrt{\alpha}} \ln\left( \frac{1 + \alpha + 2\sqrt{\alpha}}{1 + \alpha - 2\sqrt{\alpha}}\right) }
+\end{align}`
+where `\(\lambda\)` is `\(M_e/(h^2\ln(2N_e))\)` and `\(\alpha\)` is `\(1 + 2(M_e/Nh^2\ln(2N_e))\)`
+
+
+- treating markers as random
+
+- assuming complete LD between marker and QTL pairs
+
+- QTL effects were assumed to be sampled from a normal distribution
+
+- assumes that QTL with high minor allele frequencies have more accurate effect size than QTL with low minor allele frequencies
+
+
+---
+
+# Deterministic formula (3)
+Goddard et al. (2011)
+`\begin{align}
+r &amp;= \sqrt{b \frac{Nbh^2/M_e}{1 + Nbh^2/M_e}}
+\end{align}`
+where `\(b = M/(M + M_e)\)`  is the proportion of genetic variance explained by the markers and `\(M\)` is the is the number of markers. 
+
+- accounts for incomplete LD between markers and QTL
+
+
+
+---
+
+# Deterministic formula (4)
+Rabier et al. (2016)
+`\begin{align*}
+r &amp;= \sqrt{\frac{h^2/(1-h^2)}{M_e/N + h^2/(1-h^2)}}.
+\end{align*}`
+
+- relaxing the assumption of `\(\sigma^2_{\epsilon}\)` and `\(\sigma^2_g + \sigma^2_{\epsilon}=1\)`
+
+- can be applied with any value of `\(\sigma^2_{\epsilon}\)` and `\(\sigma^2_g\)`
+
+
+---
+
+# Deterministic formula (5)
+Rabier et al. (2016)
+`\begin{align*}
+r &amp;= \sqrt{\frac{h^2/(1-h^2)}{\mathbb{E}(||\mathbf{x}'_{n_{\text{TRN} + 1}} \mathbf{X}'\mathbf{V}^{-1} ||^2)  + h^2/(1-h^2)}}
+\end{align*}`
+`\(M_e/N\)` is equal to `\(\mathbb{E}(||\mathbf{x}'_{n_{\text{TRN} + 1}} \mathbf{X}'\mathbf{V}^{-1} ||^2)\)` under RRBLUP.  
+
+- `\(\mathbf{x}'_{n_{\text{TRN} + 1}}\)` is the vector of markers belonging to the testing set individual
+- `\(\mathbf{X}\)` is the training set allele content matrix 
+- `\(\mathbf{V} = \mathbf{X}\mathbf{X}' + \lambda \mathbf{I}\)` 
+- `\(\lambda\)` is the regularization parameter 
+- `\(||.||^2\)` is the squared norm
+
+Note that if we can assume individuals in training and testing sets were sampled from the same population, 
+`\(\hat{\mathbb{E}}(||\mathbf{x}'_{n_{\text{TRN} + 1}} \mathbf{X}'\mathbf{V}^{-1} ||^2) \le 1\)` 
+
+
+
+
+---
+
+# Deterministic formula (6)
+de los Campos et al. (2013)
+
+Under the genomic best linear unbiased prediction framework
+`\begin{align}
+r &amp;= \sqrt{ [1 - (1 - b)^2] h^2 }
+\end{align}`
+
+- assuming that the patterns of allele sharing between markers and causal loci are different 
+
+- `\(b\)` is the average regression coefficient of the marker-based genomic relationships on genomic relationships at QTL
+
+
+
+---
+
+# Deterministic formula (7)
+- Karaman et al. (2016)
+`\begin{align}
+r &amp;=  \sqrt{ h^2_M \left[ \frac{N h^2_M}{N h^2_M + M_e}  \right] }
+\end{align}`
+
+
+- correlation between phenotypes and estimated breeding values (additive genetic values)
+
+- `\(h^2_M\)` is the genomic heritability, which is the proportion of phenotypic variance that is explained by regression on markers.
+
+
+---
+
+# Deterministic formula (8)
+
+- Wientjes et al. (2016)
+`\begin{align}
+r = \sqrt{ \begin{bmatrix} b_{AC} r_{G_{AC}} \sqrt{\frac{h^2_A}{M_{e_{A,C}}}  } &amp; b_{BC} r_{G_{BC}} \sqrt{\frac{h^2_B}{M_{e_{B,C}}}} \end{bmatrix} \begin{bmatrix} \frac{h^2_A}{M_{e_{A,C}}} + \frac{1}{N_A} &amp; r_{G_{AB}} \sqrt{\frac{h^2_A h^2_B}{M_{e_{A,C}} M_{e_{B,C}} }   } \\ r_{G_{AB}} \sqrt{\frac{h^2_A h^2_B}{M_{e_{A,C}} M_{e_{B,C}} }   } &amp;  \frac{h^2_B}{M_{e_{B,C}}} + \frac{1}{N_B} \end{bmatrix}^{-1} } \\
+\times \sqrt{\begin{bmatrix} b_{AC} r_{G_{AC}} \sqrt{\frac{h^2_A}{M_{e_{A,C}}}} \\ b_{BC} r_{G_{BC}} \sqrt{\frac{h^2_B}{M_{e_{B,C}}}} \end{bmatrix}}
+\end{align}`
+
+Combines two populations A and B to predict prediction accuracy in population C.
+
+- `\(b_{AC}\)` is the square root of the proportion of the genetic variance in predicted population C explained by the markers in training population A
+- `\(r_{G_{AC}}\)` is the genetic correlation between populations A and C
+- `\(M_{e_{A,C}}\)` is the effective number of chromosome segments shared between populations A and C
+
+
+---
+
+# Paper
+&lt;img src="GSE.png" height="420px" width="710px"/&gt;
+
+[doi:10.1186/s12711-017-0368-4](https://doi.org/10.1186/s12711-017-0368-4)
+
+
+
+---
+class: inverse, center, middle
+
+# Relationship-based deterministic formulas
+
+
+
+---
+## Relationship-based deterministic formula (1)
+
+* use genotypes of selection candidates and reference individuals
+* accounts for family structures
+
+[VanRaden (2008)](https://doi.org/10.3168/jds.2007-0980) - selection index theory
+* accuracy of genomic prediction for each testing set individual (rather than the entire testing set individuals as seen in the population-parameter deterministic formuals)
+
+`\begin{align}
+r &amp;= \sqrt{ \mathbf{c} \left [ \mathbf{G} + \mathbf{I} \frac{\sigma^2_{\epsilon}}{\sigma^2_g}  \right ]^{-1} \mathbf{c}' }
+\end{align}`
+
+- `\(\mathbf{c}\)` is a vector of genomic relationships between the testing set individual and the reference population
+- `\(\mathbf{G}\)` is the genomic relationships among the reference population individuals
+
+
+---
+## Relationship-based deterministic formula (2)
+
+[Wientjes et al. (2015)](https://doi.org/10.1186/s12711-014-0086-0) - extended to across-population genomic prediction 
+* predict an individual in population C from populations A and B
+
+`\begin{align}
+r = \sqrt{ \begin{bmatrix} r_{G_{AC}}\mathbf{c}_{AC} &amp;  r_{G_{BC}}\mathbf{c}_{BC}  \end{bmatrix} \begin{bmatrix} \mathbf{G}_A + \mathbf{I}_A\frac{\sigma^2_{e_{a}}}{\sigma^2_{g_{a}}} &amp; r_{G_{AB}}\mathbf{c}_{AB} \\ r_{G_{AB}}\mathbf{c}_{AB}' &amp;  \mathbf{G}_B + \mathbf{I}_B\frac{\sigma^2_{e_{b}}}{\sigma^2_{g_{b}}} \end{bmatrix}^{-1} } \\
+\times \sqrt{ \begin{bmatrix} r_{G_{AC}}\mathbf{c}_{AC}' \\ r_{G_{BC}}\mathbf{c}_{BC}' \end{bmatrix}}
+\end{align}`
+
+
+* predict an individual in population C from population A 
+
+`\begin{align}
+r &amp;= \sqrt{ r_{G_{AC}}\mathbf{c}_{AC} \left [ \mathbf{G}_{A} + \mathbf{I}_{A} \frac{\sigma^2_{e_{a}}}{\sigma^2_{g_{a}}}  \right ] r_{G_{AC}}\mathbf{c}_{AC}' }
+\end{align}`
+
+- 
+
+
+
+
+
+
+
+
+
+
+
+---
+# Assumption about marker effects
+
+- BLUP assumes normally distributed QTL / marker effects
+
+- Does not match the prior information regarding the distributions of QTL / marker effects for some traits
+
+- What if we want to assume QTL / markers have non-Gaussian distribution?
+
+
+
+---
+# Function f(.)
+
+Search for a function `\(\mathbf{y} \leftarrow f(\mathbf{W})\)` that can deal with 
+
+- dimensionality
+    - number of SNP (m) &gt;  number of individuals (n)
+
+- complexity
+    - flexible with respect to type of input data (e.g., gene action)
+
+
+---
+# Penalized regression
+Treat markers as fixed effect
+
+`\begin{align*}
+    \mathbf{y} &amp;= \mathbf{Wa} + \boldsymbol{\epsilon}
+\end{align*}`
+  
+Penalty function: `\(\mathbf{J}(\mathbf{a})\)`, Smoothing parameter: `\(\lambda\)`
+ 
+`\begin{align*}
+  \mathbf{a} &amp;= argmin_{a}[(\mathbf{y} - \mathbf{Wa})' (\mathbf{y} - \mathbf{Wa}) + \lambda \mathbf{J}( \mathbf{a} )]
+\end{align*}`
+
+Ridge regression (L2 penalty)
+
+- `\(\mathbf{J}( \mathbf{a} ) =  \sum_{j=1}^{m}a_{j}^2 \rightarrow\)` `\(\hat{\mathbf{a}}_{ridge} = (\mathbf{W}'\mathbf{W}) + \lambda\mathbf{I})^{-1}\mathbf{W}'\mathbf{y}\)`
+
+- how to pick `\(\lambda\)`?
+
+LASSO (L1 penalty)
+
+- `\(\mathbf{J}(\mathbf{a}) =  \sum_{j=1}^{m}|a_{j}| \rightarrow\)` no closed form
+
+
+---
+# Bayes theorem
+`\begin{align*}
+  \begin{cases}
+    y: &amp; \text{ observed data } y \sim p(y|\theta)  \\
+    \theta : &amp; \text{ parameters (all unobserved quantities) }
+    \end{cases}
+\end{align*}`
+
+`\begin{align*}
+  p(\theta | y) &amp;= \frac{p(\theta, y)}{p(y)} \\
+  &amp;= \frac{ p(y | \theta) p(\theta)  }{ p(y) }  \\
+  \underbrace{p(\theta | y)}_{posterior} &amp;\propto \underbrace{p(y | \theta)}_{sampling \text{ } dis} \underbrace{p(\theta)}_{prior} \\
+\end{align*}`
+
+
+- posterior = data (likelihood) x prior
+- `\(p(\theta | y)  = f(y|\theta) \cdot p(\theta)\)`
+- all unknowns are treated as random
+- predictive distribution
+- assign a prior distribution for all unknowns
+- derive marginal or conditional posterior
+
+
+---
+# Bayesian penalized regression  `\(\lambda = \frac{\sigma^2_e}{\sigma^2_{a}}\)`
+
+Bayesian ridge regression
+`\begin{align*}
+ \hat{a} &amp;=_{argmin} \left[ (\mathbf{y} - \mathbf{W}\mathbf{a})'(\mathbf{y}- \mathbf{W} \mathbf{a}) + \lambda \mathbf{a}' \mathbf{I} \mathbf{a} \right]   \\
+   &amp;=_{argmax} \left[ - \frac{1}{2}(\mathbf{y} - \mathbf{W}\mathbf{a})'(\mathbf{y}- \mathbf{W} \mathbf{a}) - \frac{1}{2}  
+    \lambda \mathbf{a}' \mathbf{I} \mathbf{a} \right]   \\
+   &amp;=_{argmax} \left[ - \frac{1}{2 \sigma^2_e}(\mathbf{y} - \mathbf{W}\mathbf{a})'(\mathbf{y}- \mathbf{W} \mathbf{a}) - \frac{1}{2 \sigma^2_e}  
+    \lambda \mathbf{a}' \mathbf{I} \mathbf{a} \right]   \\
+   &amp;=_{argmax} \left[ - \frac{1}{2 \sigma^2_e}(\mathbf{y} - \mathbf{W}\mathbf{a})'(\mathbf{y}- \mathbf{W} \mathbf{a}) - \frac{1}{2 \sigma^2_{a}}  
+     \mathbf{a}' \mathbf{I} \mathbf{a} \right]   \\
+   &amp;=_{argmax}  \exp \left \{  \left[ - \frac{1}{2 \sigma^2_e}(\mathbf{y} - \mathbf{W}\mathbf{a})'(\mathbf{y}- \mathbf{W} \mathbf{a}) - \frac{1}{2 \sigma^2_a}       \mathbf{a}' \mathbf{I} \mathbf{a} \right] \right \}   \\
+ &amp;=  \left [ \exp \left \{   - \frac{1}{2 \sigma^2_e}(\mathbf{y} - \mathbf{W}\mathbf{a})'(\mathbf{y}- \mathbf{W} \mathbf{a}) \right \} \exp \left \{ - \frac{1}{2 \sigma^2_{a}}       \mathbf{a}' \mathbf{I} \mathbf{a}  \right \}   \right ] 
+\end{align*}`
+
+This is proportional to `\(p(\mathbf{a}| \mathbf{y}, \sigma^2_e, \sigma^2_{a}) \propto p(\mathbf{y}|\mathbf{a}, \sigma^2_e) p(\mathbf{a}| \sigma^2_{a})\)`, that is, the posterior density of `\(\mathbf{a}\)` (given `\(\sigma^2_e\)` and `\(\sigma^2_{a}\)`) 
+
+- `\(\boldsymbol{y}|\mathbf{a}, \sigma^2_e \sim N(\mathbf{W}\mathbf{a}, \mathbf{I}\sigma^2_e)\)`
+
+- `\(\mathbf{a}|\sigma^2_{a} \sim N(0, \mathbf{I} \sigma_{a}^2)\)`
+
+
+
+---
+# Bayesian penalized regression `\(\tilde{\lambda} = \frac{\lambda}{2 \sigma^2_e}\)`
+
+Bayesian LASSO
+`\begin{align*}
+  \hat{a} &amp;=_{argmin} \left[ (\mathbf{y} - \mathbf{W}\mathbf{a})'(\mathbf{y}- \mathbf{W} \mathbf{a}) +     \lambda | \mathbf{a}' \mathbf{I} | \right]  \\
+   &amp;=_{argmax} \left[ - \frac{1}{2}(\mathbf{y} - \mathbf{W}\mathbf{a})'(\mathbf{y}- \mathbf{W} \mathbf{a}) - \frac{\lambda}{2}   | \mathbf{a} \mathbf{I}| \right]   \\
+   &amp;=_{argmax} \left[ - \frac{1}{2 \sigma^2_e}(\mathbf{y} - \mathbf{W}\mathbf{a})'(\mathbf{y}- \mathbf{W} \mathbf{a}) - \frac{ \lambda}{2 \sigma^2_e}   | \mathbf{a} \mathbf{I} | \right]   \\
+ &amp;=_{argmax} \left[ - \frac{1}{2 \sigma^2_e}(\mathbf{y} - \mathbf{W}\mathbf{a})'(\mathbf{y}- \mathbf{W} \mathbf{a}) - \tilde{\lambda}  
+     | \mathbf{a} \mathbf{I} | \right]   \\
+   &amp;=_{argmax}  \exp \left \{  \left[ - \frac{1}{2 \sigma^2_e}(\mathbf{y} - \mathbf{W}\mathbf{a})'(\mathbf{y}- \mathbf{W}\mathbf{a}) -  \tilde{\lambda}     \mathbf{a} \mathbf{I} \mathbf{a} \right] \right \}   \\
+  &amp;=  \left [ \exp \left \{   - \frac{1}{2 \sigma^2_e}(\mathbf{y} - \mathbf{W}\mathbf{a})'(\mathbf{y}- \mathbf{W} \mathbf{a}) \right \} \exp \left \{ - \tilde{\lambda}  | \mathbf{a} \mathbf{I} | \right \}   \right ] 
+\end{align*}`
+
+- Gaussian `\(\times\)` Double exponential
+
+
+---
+# BayesRR (ridge regression)
+`\begin{align*}
+    \mathbf{y} = \sum^m_{j=1} \mathbf{W}_{j} a_j + \epsilon
+    \rightarrow \mathbf{y}| a_j, \sigma^2_e \sim N(\mathbf{W}_{j} a_j, \sigma^2_e)
+\end{align*}`
+  
+`\(p(\mathbf{a}| \mathbf{y}, \sigma^2_e, \sigma^2_{a}) \propto p(\mathbf{y}|\mathbf{a}, \sigma^2_e) \cdot p(\mathbf{a}| \sigma^2_{a})\)`
+
+`\begin{align*}
+        \text{Prior distributions}
+    \begin{cases}
+          a_j|\sigma^2_{a} \sim N(0,  \sigma_{a}^{2} ) \\
+          \sigma^2_{a} \sim \chi^{-2}(\nu, S)  \\
+          \sigma^2_{e} \sim \chi^{-2}(\nu, S)
+    \end{cases}
+\end{align*}`
+
+- `\(\chi^{-2}(\nu, S) \rightarrow\)` scaled inverted chi-square distribution with `\(\nu\)` degrees of freedom  and scale parameter `\(S\)` 
+
+
+---
+# BayesL (Lasso)
+
+`\begin{align*}
+    \mathbf{y} = \sum^m_{j=1} \mathbf{W}_{j} a_j + \epsilon
+    \rightarrow \mathbf{y}| a_j, \sigma^2_e \sim N(\mathbf{W}_{j} a_j, \sigma^2_e)
+\end{align*}`
+
+`\(p(\mathbf{a}| \mathbf{y}, \sigma^2_e, \sigma^2_{a}) \propto p(\mathbf{y}|\mathbf{a}, \sigma^2_e) \cdot p(\mathbf{a}| \sigma^2_{a})\)`
+
+`\begin{align*}
+\text{Prior distributions}
+    \begin{cases}
+          a_j|\sigma^2_{a_j} \sim N(0,  \sigma_{a_j}^{2} ) \\
+          \sigma^2_{a_j} \sim Exponential(\lambda)  \\
+          \sigma^2_{e} \sim \chi^{-2}(\nu, S)
+    \end{cases}
+\end{align*}`
+
+
+---
+# BayesA
+`\begin{align*}
+    \mathbf{y} = \sum^m_{j=1} \mathbf{W}_{j} a_j + \epsilon
+    \rightarrow \mathbf{y}| a_j, \sigma^2_e \sim N(\mathbf{W}_{j} a_j, \sigma^2_e)
+\end{align*}`
+
+`\(p(\mathbf{a}| \mathbf{y}, \sigma^2_e, \sigma^2_{a}) \propto p(\mathbf{y}|\mathbf{a}, \sigma^2_e) \cdot p(\mathbf{a}| \sigma^2_{a})\)`
+
+`\begin{align*}
+        \text{Prior distributions}
+    \begin{cases}
+          a_j|\sigma^2_{a_j} \sim N(0,  \sigma_{a_j}^{2} ) \\
+          \sigma^2_{a_j} \sim \chi^{-2}(\nu, S)  \\
+          \sigma^2_{e} \sim \chi^{-2}(\nu, S)
+    \end{cases}
+\end{align*}`
+
+- `\(\chi^{-2}(\nu, S) \rightarrow\)` scaled inverted chi-square distribution with `\(\nu\)` degrees of freedom  and scale parameter `\(S\)` 
+
+
+
+
+---
+# BayesB
+`\begin{align*}
+    \mathbf{y} = \sum^m_{j=1} \mathbf{W}_{j} a_j + \epsilon
+    \rightarrow \mathbf{y}| a_j, \sigma^2_e \sim N(\mathbf{W}_{j} a_j, \sigma^2_e)
+\end{align*}`
+
+`\(p(\mathbf{a}| \mathbf{y}, \sigma^2_e, \sigma^2_{a}) \propto p(\mathbf{y}|\mathbf{a}, \sigma^2_e) \cdot p(\mathbf{a}| \sigma^2_{a})\)`
+
+`\begin{align*}
+        \text{Prior distributions}
+    \begin{cases}
+          a_j|\sigma^2_{a_j} \sim N(0,  \sigma_{a_j}^{2} ) \\
+          \begin{cases}
+            \sigma^2_{a_j} = 0  \quad \text{with probability} \quad \pi\\
+            \sigma^2_{a_j} \sim  \chi^{-2}(\nu, S) \quad \text{with probability} \quad (1 - \pi)
+          \end{cases} \\
+          \sigma^2_{e} \sim \chi^{-2}(\nu, S)
+    \end{cases}
+\end{align*}`
+
+- `\(\pi\)`: probability that markers have no effect
+
+- `\(\chi^{-2}(\nu, S) \rightarrow\)` scaled inverted chi-square distribution with `\(\nu\)` degrees of freedom  and scale parameter `\(S\)` 
+
+
+
+---
+# BayesB* (modified version)
+`\begin{align*}
+    \mathbf{y} = \sum^m_{j=1} \mathbf{W}_{j} a_j + \epsilon
+    \rightarrow \mathbf{y}| a_j, \sigma^2_e \sim N(\mathbf{W}_{j} a_j, \sigma^2_e)
+\end{align*}`
+
+`\(p(\mathbf{a}| \mathbf{y}, \sigma^2_e, \sigma^2_{a}) \propto p(\mathbf{y}|\mathbf{a}, \sigma^2_e) \cdot p(\mathbf{a}| \sigma^2_{a})\)`
+
+`\begin{align*}
+        \text{Prior distributions}
+        \begin{cases}
+           \begin{cases}
+                       a_j =  0  \quad \text{with probability} \quad  \pi  \\
+                       a_j|\sigma^2_{a_j} \sim N(0,  \sigma_{a_j}^{2} )  \quad \text{with probability} \quad (1 - \pi)
+           \end{cases} \\
+           \sigma^2_{a_j} \sim  \chi^{-2}(\nu, S)  \\
+          \sigma^2_{e} \sim \chi^{-2}(\nu, S)
+    \end{cases}
+\end{align*}`
+
+- `\(\pi\)`: probability that markers have no effect
+
+- `\(\chi^{-2}(\nu, S) \rightarrow\)` scaled inverted chi-square distribution with `\(\nu\)` degrees of freedom  and scale parameter `\(S\)` 
+
+
+---
+# BayesB** (modified version)
+`\begin{align*}
+    \mathbf{y} = \sum^m_{j=1} \mathbf{W}_{j} a_j + \epsilon
+    \rightarrow \mathbf{y}| a_j, \sigma^2_e \sim N(\mathbf{W}_{j} a_j, \sigma^2_e)
+\end{align*}`
+
+`\(p(\mathbf{a}| \mathbf{y}, \sigma^2_e, \sigma^2_{a}) \propto p(\mathbf{y}|\mathbf{a}, \sigma^2_e) \cdot p(\mathbf{a}| \sigma^2_{a})\)`
+
+`\begin{align*}
+        \text{Prior distributions}
+        \begin{cases}
+           \begin{cases}
+                       a_j|\sigma^2_{a_j} \sim N(0,  \sigma_{a_j}^{2} \approx 0)  \quad \text{with probability} \quad  \pi  \\
+                       a_j|\sigma^2_{a_j} \sim N(0,  \sigma_{a_j}^{2} )  \quad \text{with probability} \quad (1 - \pi)
+           \end{cases} \\
+           \sigma^2_{a_j} \sim  \chi^{-2}(\nu, S)  \\
+          \sigma^2_{e} \sim \chi^{-2}(\nu, S)
+    \end{cases}
+\end{align*}`
+
+- `\(\pi\)`: probability that markers have no effect
+
+- `\(\chi^{-2}(\nu, S) \rightarrow\)` scaled inverted chi-square distribution with `\(\nu\)` degrees of freedom  and scale parameter `\(S\)` 
+
+
+
+---
+# BayesCpi
+`\begin{align*}
+    \mathbf{y} = \sum^m_{j=1} \mathbf{W}_{j} a_j + \epsilon
+    \rightarrow \mathbf{y}| a_j, \sigma^2_e \sim N(\mathbf{W}_{j} a_j, \sigma^2_e)
+\end{align*}`
+
+`\(p(\mathbf{a}| \mathbf{y}, \sigma^2_e, \sigma^2_{a}) \propto p(\mathbf{y}|\mathbf{a}, \sigma^2_e) \cdot p(\mathbf{a}| \sigma^2_{a})\)`
+
+`\begin{align*}
+        \text{Prior distributions}
+        \begin{cases}
+           \begin{cases}
+                       a_j = 0  \quad \text{with probability} \quad  \pi  \\
+                       a_j|\sigma^2_{a} \sim N(0,  \sigma_{a}^{2} )  \quad \text{with probability} \quad (1 - \pi)
+           \end{cases} \\
+           \pi \sim Uniform(0,1) \\
+           \sigma^2_{a} \sim  \chi^{-2}(\nu, S)  \\
+          \sigma^2_{e} \sim \chi^{-2}(\nu, S)
+    \end{cases}
+\end{align*}`
+
+- `\(\pi\)`: probability that markers have no effect
+
+- `\(\chi^{-2}(\nu, S) \rightarrow\)` scaled inverted chi-square distribution with `\(\nu\)` degrees of freedom  and scale parameter `\(S\)` 
+
+
+---
+# BayesC
+`\begin{align*}
+    \mathbf{y} = \sum^m_{j=1} \mathbf{W}_{j} a_j + \epsilon
+    \rightarrow \mathbf{y}| a_j, \sigma^2_e \sim N(\mathbf{W}_{j} a_j, \sigma^2_e)
+\end{align*}`
+
+`\(p(\mathbf{a}| \mathbf{y}, \sigma^2_e, \sigma^2_{a}) \propto p(\mathbf{y}|\mathbf{a}, \sigma^2_e) \cdot p(\mathbf{a}| \sigma^2_{a})\)`
+
+`\begin{align*}
+        \text{Prior distributions}
+        \begin{cases}
+           \begin{cases}
+                       a_j = 0  \quad \text{with probability} \quad  \pi  \\
+                       a_j|\sigma^2_{a} \sim N(0,  \sigma_{a}^{2} )  \quad \text{with probability} \quad (1 - \pi)
+           \end{cases} \\
+           \sigma^2_{a} \sim  \chi^{-2}(\nu, S)  \\
+          \sigma^2_{e} \sim \chi^{-2}(\nu, S)
+    \end{cases}
+\end{align*}`
+
+- `\(\pi\)`: probability that markers have no effect
+
+- `\(\chi^{-2}(\nu, S) \rightarrow\)` scaled inverted chi-square distribution with `\(\nu\)` degrees of freedom  and scale parameter `\(S\)` 
+
+
+---
+# Prior densities of a ([de los Campos et al., 2012](https://doi.org/10.1534/genetics.112.143313))
+&lt;img src="deloscampos2012.png" width=700 height=280&gt;
+
+.pull-left[
+- Bayes RR (ridge regression)
+- BayesL (LASSO)
+- BayesA
+- BayesB
+]
+
+
+
+.pull-right[
+- BayesB*
+- BayesB**
+- BayesC
+- BayesCpi
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
