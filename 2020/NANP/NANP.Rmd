@@ -355,7 +355,7 @@ ui <- fluidPage(
       {{radioButtons("dd",}}
                    {{label = "Select Diet",}}
                    {{choices = list("ALL" = 0, "1" = 1,"2" = 2,"3" = 3,"4" = 4),}}
-                   {{selected = 0)} }}
+                   {{selected = 0)}}}
 
     ),
     # Main panel for displaying outputs ----
