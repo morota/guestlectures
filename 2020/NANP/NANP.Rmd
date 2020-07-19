@@ -1,5 +1,5 @@
 ---
-title: "Interactive Visualization of Agricultural Science Data using R Shiny"
+title: "Statistical Graphics and Interactive Visualization in Animal Science"
 subtitle: "NANP Symposium"
 author: "Gota Morota <br />[http://morotalab.org/](http://morotalab.org/) <br />"
 date: "2020/7/19"
