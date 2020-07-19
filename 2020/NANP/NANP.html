@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Interactive Visualization of Agricultural Science Data using R Shiny</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Gota Morota  http://morotalab.org/" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Interactive Visualization of Agricultural Science Data using R Shiny
+## NANP Symposium
+### Gota Morota <br /><a href="http://morotalab.org/">http://morotalab.org/</a> <br />
+### 2020/7/19
+
+---
+
+
+
+
+
+
+
+# About me 
+![](map.png)
+
+
+
+---
+class: big, inverse, left, middle
+
+&lt;h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt; Quantitative genetics &lt;/li&gt;
+  &lt;ul&gt;
+  &lt;li&gt; animals &lt;/li&gt;
+  &lt;li&gt; plants &lt;/li&gt;
+  &lt;/ul&gt;
+
+&lt;br/&gt;
+&lt;li&gt;Big data analysis&lt;/li&gt;
+
+&lt;br/&gt;
+
+&lt;li&gt;Computer vision and image analysis for image-based high-throughput phenotyping&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/h1&gt;
+
+---
+# Interactive visualization in a nutshell
+Example 
+[Collision Detection](https://bl.ocks.org/mbostock/raw/3231298/)
+
+
+---
+class: small, left, top
+## Why Interactive Visualization?
+
+Interactivity allows users to
+  
+* ####Focus on detail:
+
+  * Select and Zoom into a visualization
+  * Hover over to get the exact information
+
+* ####Enhance User experience:
+
+  * Provide a tool for viewers to explore your data
+  * User can actively select areas of interest in a chart
+  * Users can get a summary of the relevant data
+
+* ####Pose multiple questions:
+
+    * Switch axes or to add confabulating factors
+    * Break down responses to a specific question
+
+.footnote[Martin Hadley, 3 benefits of interactive visualization, https://campus.sagepub.com/blog/3-benefits-of-interactive-visualization]
+
+
+
+
+
+---
+class: small, left, top
+## Why Interactive Visualization?
+
+#### Interactivity allows users to focus on detail:
+
+  * Select and Zoom into a visualization
+  * Hover over to get the exact information
+
+.footnote[Martin Hadley, 3 benefits of interactive visualization, https://campus.sagepub.com/blog/3-benefits-of-interactive-visualization]
+
+
+
+---
+# Scatter Plots 
+&lt;iframe src="p1.html" width="100%" height="540" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"&gt; &lt;/iframe&gt;
+[https://plot.ly/r/line-and-scatter/](https://plot.ly/r/line-and-scatter/)
+
+---
+# Scatter and Line Plots 
+&lt;iframe src="p2.html" width="100%" height="540" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"&gt; &lt;/iframe&gt;
+[https://plot.ly/r/line-and-scatter/](https://plot.ly/r/line-and-scatter/)
+
+---
+# Cumulative Lines Animation 
+&lt;iframe src="p3.html" width="100%" height="540" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"&gt; &lt;/iframe&gt;
+[https://plot.ly/r/cumulative-animations/](https://plot.ly/r/cumulative-animations/)
+
+
+
+
+---
+class: small, left, top
+## Why Interactive Visualization?
+
+#### Interactivity allows enhanced user experience:
+
+  * Provide a tool for viewers to explore your data
+
+  * User can actively select areas of interest in a chart
+
+  * Users can get a summary of the relevant data
+
+.footnote[Martin Hadley, 3 benefits of interactive visualization, https://campus.sagepub.com/blog/3-benefits-of-interactive-visualization]
+
+
+---
+# Basic Range Slider and Selector Buttons
+&lt;iframe src="p4.html" width="100%" height="540" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"&gt; &lt;/iframe&gt;
+[https://plot.ly/r/range-slider/](https://plot.ly/r/range-slider/)
+
+
+---
+# Mulitple Slider Controls
+&lt;iframe src="p5.html" width="100%" height="540" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"&gt; &lt;/iframe&gt;
+[https://plot.ly/r/range-slider/](https://plot.ly/r/range-slider/)
+
+
+---
+class: small, left, top
+## Why Interactive Visualization?
+
+#### Interactivity allows users to pose multiple questions:
+
+* Switch axes or to add confabulating factors
+
+* Break down responses to a specific question
+
+.footnote[Martin Hadley, 3 benefits of interactive visualization, https://campus.sagepub.com/blog/3-benefits-of-interactive-visualization]
+
+
+
+
+
+
+
+
+
+
+---
+# 3D Scatter Plots
+&lt;iframe src="p3dscat.html" width="100%" height="540" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"&gt; &lt;/iframe&gt;
+
+
+
+
+---
+# Grouped Box Plots
+&lt;iframe src="p6.html" width="100%" height="540" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"&gt; &lt;/iframe&gt;
+[https://plot.ly/r/box-plots/](https://plot.ly/r/box-plots/)
+
+
+---
+# Correlation Map
+&lt;iframe src="p7.html" width="100%" height="540" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"&gt; &lt;/iframe&gt;
+[https://plot.ly/~smysona/8/correlation-map/#/](https://plot.ly/~smysona/8/correlation-map/#/)
+
+
+
+
+---
+# New York Times interactive graphics
+&lt;img src="NYTgraphics.png" width=330 height=220&gt;
+
+[NYT Graphics Twitter](https://twitter.com/nytgraphics?lang=en)
+
+
+Some examples in agriculture and environments 
+
+- [Disappearing shorelines](https://archive.nytimes.com/www.nytimes.com/interactive/2012/11/24/opinion/sunday/what-could-disappear.html)
+
+- [ Drought Across the U.S.](https://www.nytimes.com/interactive/2014/upshot/mapping-the-spread-of-drought-across-the-us.html)
+
+
+---
+# Shiny - [https://shiny.rstudio.com/](https://shiny.rstudio.com/)
+
+- A web application framework for **interactive** visualization in R
+
+- Able to generate user friendly web interfaces 
+
+- Interactively explore data
+
+- Built on a reactive programming model
+
+- Entirely extensible 
+   - custom inputs and outputs
+   - CSS themes
+   - JavaScript and D3.js
+
+- Example - [Collision Detection](https://bl.ocks.org/mbostock/raw/3231298/)
+
+---
+
+# Shiny framework 
+&lt;img src="Shinyframework.png" height="300px" width="650px"/&gt;
+
+
+
+
+---
+
+# Control widgets 
+&lt;img src="widgets.png" width=700 height=470&gt;
+.left[[RStudio](https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/)]
+
+
+
+
+---
+# Basic components of a shiny app
+
+```r
+library(shiny)
+
+ui &lt;- fluidPage(YOUR CODE)
+server &lt;- function(input, output) {YOUR CODE}
+
+shinyApp(ui = ui, server = server)
+```
+The Shiny app consists of a **ui** and **server** in a single file named **app.R.**
+
+- The ui controls the layout and style
+
+- The server controls the behaviour
+
+Alternatively, we can run a shiny app using the `runApp()` function 
+
+```r
+shiny::runApp('~/Dropbox/chikudaisei/research2/myseminar/2020/3')
+```
+
+
+---
+# Animal data
+ChickWeight data from the [datasets](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/ChickWeight.html) package. The body weights of the chicks were measured at birth and every second day thereafter until day 21. There were four groups on chicks on different protein diets.
+
+- weight: a numeric vector giving the body weight of the chick (gm).
+
+- Time: a numeric vector giving the number of days since birth when the measurement was made.
+
+- Chick: an ordered factor with levels 18 &lt; ... &lt; 48 giving a unique identifier for the chick.
+
+- Diet: a factor with levels 1, ..., 4 indicating which experimental diet the chick received.
+
+
+```r
+library(datasets)
+
+head(ChickWeight)
+  weight Time Chick Diet
+1     42    0     1    1
+2     51    2     1    1
+3     59    4     1    1
+4     64    6     1    1
+5     76    8     1    1
+6     93   10     1    1
+```
+
+
+
+
+---
+# User interface object 1
+
+```r
+ui &lt;- fluidPage(
+  # App title ----
+  titlePanel("ChickWeight data"),
+  # Sidebar layout with input and output definitions ----
+  sidebarLayout(
+    # Sidebar panel for inputs ----
+    sidebarPanel(
+      # Input: Slider for the number of bins ----
+*      sliderInput(inputId = "bins",
+*                  label = "Number of bins:",
+*                  min = 1,
+*                  max = 30,
+*                  value = 15)
+    ),
+    # Main panel for displaying outputs ----
+    mainPanel(
+      # Output: Histogram ----
+*      plotOutput(outputId = "distPlot")
+    )
+  )
+)
+```
+
+
+
+
+---
+# Server function 1
+
+```r
+server &lt;- function(input, output) {
+
+  # Plot
+*  output$distPlot &lt;- renderPlot({
+    
+    x &lt;- ChickWeight$weight
+*    bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)
+    hist(x, breaks = bins, col = "#75AADB", border = "white",
+         xlab = "Weight",
+         main = "ChickWeight data")
+  })
+}
+```
+
+
+---
+class: inverse, left, middle
+
+# Histogram for each diet type?
+
+![Wikimedia](Hen_and_chicks_cartoon_04.svg)
+[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hen_and_chicks_cartoon_04.svg)
+
+
+
+---
+# User interface object 2
+
+```r
+ui &lt;- fluidPage(
+  titlePanel("ChickWeight data"),
+  sidebarLayout(
+      sidebarPanel(
+      sliderInput(inputId = "bins",
+                  label = "Number of bins:",
+                  min = 1,
+                  max = 30,
+                  value = 15),
+
+*      radioButtons("dd",
+*                   label = "Select Diet",
+*                   choices = list("ALL" = 0, "1" = 1,"2" = 2,"3" = 3,"4" = 4),
+*                   selected = 0)} 
+
+    ),
+    # Main panel for displaying outputs ----
+    mainPanel(
+      plotOutput(outputId = "distPlot"),
+      
+  )
+))
+```
+
+
+
+---
+# Server function 2
+
+```r
+server &lt;- function(input, output) {
+
+  # Reactive dataframe
+*  ChickWeight2 &lt;- reactive({
+*    a &lt;- subset(ChickWeight, Diet == as.numeric(input$dd))
+*    return(a)
+*  }}})
+
+  # Plot
+  output$distPlot &lt;- renderPlot({
+*    if (input$dd == 0){
+      x &lt;- ChickWeight$weight
+      bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)
+      hist(x, breaks = bins, col = "#75AADB", border = "white",
+           xlab = "Weight",
+           main = "ChickWeight data")
+*   }} } else {
+*      x &lt;- ChickWeight2()$weight
+*      bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)
+*      hist(x, breaks = bins, col = "#75AADB", border = "white",
+*           xlab = "Weight",
+*           main = "ChickWeight data")
+}})}
+```
+
+
+---
+class: inverse, left, middle
+
+# Demo 1
+
+![Wikimedia](Hen_and_chicks_cartoon_04.svg)
+[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hen_and_chicks_cartoon_04.svg)
+
+
+
+
+---
+class: inverse, left, middle
+
+# Can we also make a plot interactive? 
+
+![Wikimedia](Hen_and_chicks_cartoon_04.svg)
+[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hen_and_chicks_cartoon_04.svg)
+
+
+
+---
+# Plotly R graphing library 
+&lt;img src="plotly.png" width=700 height=450&gt;
+[https://plot.ly/r/](https://plot.ly/r/)
+
+
+
+---
+# User interface object 3
+
+```r
+ui &lt;- fluidPage(
+  titlePanel("ChickWeight data"),
+  sidebarLayout(
+      sidebarPanel(
+      sliderInput(inputId = "bins",
+                  label = "Number of bins:",
+                  min = 1,
+                  max = 30,
+                  value = 15),
+
+      radioButtons("dd",
+                   label = "Select Diet",
+                   choices = list("ALL" = 0, "1" = 1,"2" = 2,"3" = 3,"4" = 4),
+                   selected = 0)} 
+
+    ),
+    # Main panel for displaying outputs ----
+    mainPanel(
+*      plotOutputly(outputId = "distPlot"),
+      
+  )
+))
+```
+
+
+
+
+---
+# Server function 3
+
+```r
+server &lt;- function(input, output) {
+
+  # Reactive dataframe
+  ChickWeight2 &lt;- reactive({
+    a &lt;- subset(ChickWeight, Diet == as.numeric(input$dd))
+    return(a)
+  })
+
+  # Plot
+*  output$distPlot &lt;- renderPlotly({
+    
+    if (input$dd == 0){
+      x &lt;- ChickWeight$weight
+*      plot_ly(x = ~x, nbinsx = input$bins + 1, type = "histogram")
+    } else {
+      x &lt;- ChickWeight2()$weight
+*      plot_ly(x = ~x, nbinsx = input$bins + 1, type = "histogram")
+    }
+  })
+}
+```
+
+
+
+---
+class: inverse, left, middle
+
+# Demo 2
+
+![Wikimedia](Hen_and_chicks_cartoon_04.svg)
+[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hen_and_chicks_cartoon_04.svg)
+
+
+
+
+---
+# Shiny vs. Plotly
+
+- Shiny: Interactive web applications 
+
+- Plotly: Interactive plots
+
+- Shiny and Plotly:  Interactive web applications and plots 
+
+
+.pull-left[
+
+![](shinyLogo.png)
+]
+
+
+.pull-right[
+
+![](plotlyLogo.png)
+]
+
+
+---
+# Reactive programming 
+What makes shiny apps interactive is **reactivity**.
+
+Standard R programming 
+
+```r
+x &lt;- 5
+y &lt;- x + 1
+x &lt;- 10
+```
+
+
+Reactive R programming 
+
+```r
+r &lt;- reactiveValues()
+r$x &lt;- 5
+y &lt;- reactive(r$x + 1)
+r$x &lt;- 10
+```
+
+
+Credit: [Mitchell O'Hara‑Wild](https://workshop.nectric.com.au/intermediate-shiny/slides/reactive/#1)
+
+
+---
+# Shiny cheatsheet  
+
+&lt;img src="cheat.png" height="420px" width="710px"/&gt;
+
+[https://shiny.rstudio.com/images/shiny-cheatsheet.pdf](https://shiny.rstudio.com/images/shiny-cheatsheet.pdf)
+
+
+
+
+---
+# Are you a Python user? No problem! 
+Dash: Python framework for building web applications
+
+&lt;img src="dash.png" height="420px" width="710px"/&gt;
+
+[https://plotly.com/dash/](https://plotly.com/dash/)
+
+
+
+
+
+
+---
+# Static Manhattan plot
+![](https://upload.wikimedia.org/wikipedia/commons/1/12/Manhattan_Plot.png)
+.right[[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Manhattan_Plot.png)]
+
+
+
+
+
+---
+class: inverse, left, middle
+
+# ShinyAIM - Shiny‐based application of interactive Manhattan plots
+
+Can be used for 
+
+- can explore GWAS peaks _interactively_
+
+- _interactive_ exploration of Manhattan plots for longitudinal genome‐wide association studies (GWAS)
+
+- no knowlege of R, HTML, JavaScript, or CSS is required. R code encapsulated as a web-based Shiny application
+
+
+Available at [https://chikudaisei.shinyapps.io/shinyaim/](https://chikudaisei.shinyapps.io/shinyaim/) and [https://github.com/whussain2/ShinyAIM](https://github.com/whussain2/ShinyAIM)
+
+
+
+
+
+---
+# ShinyAIM Paper
+&lt;img src="shinyAIM.png" height="350px" width="650px"/&gt;
+
+[https://doi.org/10.1002/pld3.91](https://doi.org/10.1002/pld3.91)
+
+
+
+
+
+---
+# Deterministic genomic prediction formulas
+
+-  highlight the relationships among prediction accuracy and potential factors influencing prediction accuracy
+
+- no computationally intensive cross-validation
+
+
+1)  **Population parameter-based deterministic formulas**
+
+- genotypes of individuals are not required 
+
+2)  **Relationship-based deterministic formulas**
+
+- genotypes of individuals need to be known
+
+
+---
+class: inverse, left, middle
+
+# ShinyGPAS - Shiny Genomic Prediction Accuracy Simulator
+
+Can be used for 
+- _interactive_ exploration of potential factors influencing prediction accuracy 
+
+- simulation of achievable prediction accuracy 
+   - prior to genotyping individuals or performing CV
+   
+- supporting in-class teaching
+
+- no knowlege of R, HTML, JavaScript, or CSS is required. R code encapsulated as a web-based Shiny application
+
+
+Available at [https://chikudaisei.shinyapps.io/shinygpas/](https://chikudaisei.shinyapps.io/shinygpas/) and [https://github.com/morota/ShinyGPAS](https://github.com/morota/ShinyGPAS)
+
+
+
+
+---
+
+# ShinyGPAS Paper
+&lt;img src="GSE.png" height="420px" width="710px"/&gt;
+
+[doi:10.1186/s12711-017-0368-4](https://doi.org/10.1186/s12711-017-0368-4)
+
+
+
+---
+# Image-based high-throughput phenotyping in plants
+.pull-left[
+&lt;div align="left"&gt;
+&lt;iframe src="https://innovate.unl.edu/video/leasing-options/greenhouse-innovation-center.mp4" width="250" height="150" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://innovate.unl.edu/greenhouse-innovation-center"&gt;UNL Greenhouse Innovation Center&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div align="left"&gt;
+&lt;iframe width="260" height="200" src="https://www.youtube.com/embed/wor4BFjbIyI?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=wor4BFjbIyI"&gt;Spidercam&lt;/a&gt;
+&lt;/div&gt;
+
+]
+
+.pull-right[
+&lt;div align="right"&gt;
+&lt;img src="https://www.frontiersin.org/files/Articles/254051/fpls-08-00421-HTML/image_m/fpls-08-00421-g002.jpg" width=400 height=400&gt;&lt;p&gt;Unmanned aerial vehicle&lt;a href="https://www.frontiersin.org/articles/10.3389/fpls.2017.00421/full"&gt; (Watanabe et al. 2017)&lt;/a&gt;
+&lt;/div&gt;
+]
+
+
+
+---
+# Image-based high-throughput phenotyping in animals 
+&lt;img src="slide1.png" height="450px" width="610px"/&gt;
+
+
+---
+# Cows
+&lt;img src="CowPrelim25555.png" height="450px" width="610px"/&gt;
+
+A: HSV image. B: Segmented image.	C: The identified cow with a bounding box. D: Depth image.	
+
+
+---
+# Pigs
+&lt;img src="PigPrelim.png" height="450px" width="610px"/&gt;
+
+A: RGB image converted to grayscale. B: Segmented image. C: The identified pig with a bounding box. D. Depth image.
+
+
+---
+# Shiny Cow
+&lt;img src="shinycow.png" height="450px" width="610px"/&gt;
+
+Under development 
+
+
+
+---
+# Summary
+
+- data visualization plays a crucial role in summarizing and identifying the characteristics of data
+
+- however, big data prevent the plotting of the entire picture 
+
+- interactive visualization, with capabilities to zoom in and out, can help investigate both global and local structures of graphs
+
+
+
+
+---
+# Useful materials  
+
+
+- [Mastering Shiny](https://mastering-shiny.org/)
+
+
+- [Interactive documents with Shiny](https://workshop.nectric.com.au/intermediate-shiny/)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
