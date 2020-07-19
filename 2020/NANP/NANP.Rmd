@@ -31,7 +31,7 @@ class: inverse, left, middle
 <br/>
 <br/>
 
-<li>Please reload if some contents do not load properly </li>
+<li>Please reload if some content does not display properly </li>
 <ul/>
 
 ---
