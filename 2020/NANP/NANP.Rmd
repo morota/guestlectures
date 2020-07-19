@@ -348,10 +348,12 @@ server <- function(input, output) {
 class: inverse, left, middle
 
 # Demo 1
-
 [app.R](https://github.com/morota/guestlectures/blob/gh-pages/2020/NANP/app.R)
 
 ![Wikimedia](Hen_and_chicks_cartoon_04.svg)
+
+[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hen_and_chicks_cartoon_04.svg)
+
 
 ---
 class: inverse, left, middle
