@@ -354,6 +354,15 @@ server &lt;- function(input, output) {
 ---
 class: inverse, left, middle
 
+# Demo 1
+
+[app.R](https://github.com/morota/guestlectures/blob/gh-pages/2020/NANP/app.R)
+
+![Wikimedia](Hen_and_chicks_cartoon_04.svg)
+
+---
+class: inverse, left, middle
+
 # Histogram for each diet type?
 
 ![Wikimedia](Hen_and_chicks_cartoon_04.svg)
@@ -375,7 +384,7 @@ ui &lt;- fluidPage(
                   max = 30,
                   value = 15),
 
-*      radioButtons("dd",
+*      radioButtons(inputId = "dd",
 *                   label = "Select Diet",
 *                   choices = list("ALL" = 0, "1" = 1,"2" = 2,"3" = 3,"4" = 4),
 *                   selected = 0)}
@@ -413,10 +422,10 @@ server &lt;- function(input, output) {
            main = "ChickWeight data")
 *   }} } else {
 *      x &lt;- ChickWeight2()$weight
-*      bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)
-*      hist(x, breaks = bins, col = "#75AADB", border = "white",
-*           xlab = "Weight",
-*           main = "ChickWeight data")
+      bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)
+      hist(x, breaks = bins, col = "#75AADB", border = "white",
+           xlab = "Weight",
+           main = "ChickWeight data")
 }})}
 ```
 
@@ -424,7 +433,9 @@ server &lt;- function(input, output) {
 ---
 class: inverse, left, middle
 
-# Demo 1
+# Demo 2
+[app2.R](https://github.com/morota/guestlectures/blob/gh-pages/2020/NANP/app2.R)
+
 
 ![Wikimedia](Hen_and_chicks_cartoon_04.svg)
 [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hen_and_chicks_cartoon_04.svg)
@@ -463,7 +474,7 @@ ui &lt;- fluidPage(
                   max = 30,
                   value = 15),
 
-      radioButtons("dd",
+      radioButtons(inputId = "dd",
                    label = "Select Diet",
                    choices = list("ALL" = 0, "1" = 1,"2" = 2,"3" = 3,"4" = 4),
                    selected = 0)} 
@@ -471,7 +482,7 @@ ui &lt;- fluidPage(
     ),
     # Main panel for displaying outputs ----
     mainPanel(
-*      plotOutputly(outputId = "distPlot"),
+*      plotlyOutput(outputId = "distPlot"),
       
   )
 ))
@@ -511,7 +522,9 @@ server &lt;- function(input, output) {
 ---
 class: inverse, left, middle
 
-# Demo 2
+# Demo 3
+[app3.R](https://github.com/morota/guestlectures/blob/gh-pages/2020/NANP/app3.R)
+
 
 ![Wikimedia](Hen_and_chicks_cartoon_04.svg)
 [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hen_and_chicks_cartoon_04.svg)
@@ -551,6 +564,7 @@ Standard R programming
 x &lt;- 5
 y &lt;- x + 1
 x &lt;- 10
+# y equals 6 
 ```
 
 
@@ -561,6 +575,7 @@ r &lt;- reactiveValues()
 r$x &lt;- 5
 y &lt;- reactive(r$x + 1)
 r$x &lt;- 10
+# y equals 11
 ```
 
 
@@ -702,6 +717,10 @@ Available at [https://chikudaisei.shinyapps.io/shinygpas/](https://chikudaisei.s
 ---
 # Image-based high-throughput phenotyping in animals 
 &lt;img src="slide1.png" height="450px" width="610px"/&gt;
+
+---
+# Imaging systems 
+&lt;img src="facility.png" height="490px" width="680px"/&gt;
 
 
 ---
